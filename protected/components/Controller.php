@@ -19,6 +19,8 @@ class Controller extends CController
 
     public $breadcrumbs;
 
+    public $menu;
+
     public $vendorUrl;
 
     public function init() {
