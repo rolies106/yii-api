@@ -1,28 +1,9 @@
 <?php
 date_default_timezone_set('UTC');
 
-# Sixreps Agent Checker
-$agentCheck = dirname(__FILE__).'/sixreps_agent.php';
-require_once($agentCheck);
-
-# Run check for current user agent
-$agent = new SixrepsAgentDetect;
-$user_agent = $agent->check();
-
-if ($user_agent == 'wap') {
-    $user_agent = 'mobile';
-}
-
-if ($user_agent == 'tablet') {
-    $user_agent = 'phone';
-}
-
-// Tell config to remember this env
-defined('BEAUTI_ENV') or define('BEAUTI_ENV', $user_agent);
-
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/../testing/framework/yii.php';
-$config=dirname(__FILE__).'/protected/config/main-' . $user_agent . '.php';
+$yii=dirname(__FILE__).'/../framework/yii.php';
+$config=dirname(__FILE__).'/protected/config/main.php';
 $shortcode=dirname(__FILE__).'/shortcode.php';
 
 // remove the following lines when in production mode
