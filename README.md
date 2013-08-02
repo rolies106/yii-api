@@ -1,6 +1,6 @@
-# Man Woman Car
+# Yii API
 
-Just another Yii Project from [Elance](https://www.elance.com/j/web-development-web-design/39965470/?eventId=160211879)
+API engine based on Yii.
 
 ## Requirement
 
