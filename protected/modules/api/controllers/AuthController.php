@@ -27,18 +27,20 @@ class AuthController extends Controller
             $oauth->setVariable("user_id", $user_id);
         }
 
-        if (isset($_POST) && isset($_POST['LoginForm']) && !isset($_POST['authorize']))
-        {
-            $model->attributes = $_POST['LoginForm'];
-            $_POST['response_type'] = Yii::app()->request->getQuery('response_type', null);
-            $_POST = array_merge($_POST, $app);
-
-            if($model->validate())
+        if (Yii::app()->request->isPostRequest) {
+            if (isset($_POST['LoginForm']) && !isset($_POST['authorize']))
             {
-                $user_id = Yii::app()->user->id;
+                $model->attributes = $_POST['LoginForm'];
+                $_POST['response_type'] = Yii::app()->request->getQuery('response_type', null);
+                $_POST = array_merge($_POST, $app);
+
+                if($model->validate())
+                {
+                    $user_id = Yii::app()->user->id;
+                }
+            } else if (isset($_POST['authorize'])) {
+                $oauth->finishClientAuthorization($_POST['authorize'], $_POST);
             }
-        } else if (isset($_POST['authorize'])) {
-            $oauth->finishClientAuthorization($_POST['authorize'], $_POST);
         }
         
         // render the authorize page

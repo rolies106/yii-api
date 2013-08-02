@@ -42,7 +42,7 @@ return array(
             'sendActivationMail' => false,
 
             # allow access for non-activated users
-            'loginNotActiv' => true,
+            'loginNotActiv' => false,
 
             # activate user on registration (only sendActivationMail = false)
             'activeAfterRegister' => true,
@@ -71,6 +71,10 @@ return array(
 
     // application components
     'components'=>array(
+
+        'user' => array(
+            'allowAutoLogin' => true
+        ),
 
         # Clientscript configurations
         'clientScript'=>array(
