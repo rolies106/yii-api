@@ -17,6 +17,8 @@ class Controller extends CController
      */
     public $assetUrl;
 
+    public $breadcrumbs;
+
     public $vendorUrl;
 
     public function init() {
